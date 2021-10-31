@@ -36,10 +36,7 @@ namespace SyndicateSolver
             }
             if (!_wasOpened)
             {
-                if (GameController.Game.IngameState.IngameUi.BetrayalWindow.IsVisibleLocal)
-                {
-                    ParseMembers();
-                }
+                ParseMembers();
                 _wasOpened = true;
             }
         }

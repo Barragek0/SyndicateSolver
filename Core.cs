@@ -36,15 +36,19 @@ namespace SyndicateSolver
             }
             if (!_wasOpened)
             {
-                ParseMembers();
+                try
+                {
+                    ParseMembers();
+                } catch (Exception e)
+                {
+                    LogMessage("Error occured in parse members: " + e.Message);
+                }
                 _wasOpened = true;
             }
         }
 
         private void ParseMembers()
         {
-            try
-            {
                 var betrayalWindow = GameController.Game.IngameState.IngameUi.BetrayalWindow;
 
                 for (var i = 0; i < betrayalWindow.ChildCount; i++)
@@ -93,7 +97,7 @@ namespace SyndicateSolver
                     }
                 }
 
-                var syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
+               /* var syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
 
                 for (var i = 0; i < syndicateTree.ChildCount; i++)
                 {
@@ -115,11 +119,7 @@ namespace SyndicateSolver
                         if (child.Text.Length > 0)
                             LogMessage("SyndicateTree child -> " + child.Text);
                     }
-                }
-            } catch (Exception e)
-            {
-                LogError(e.StackTrace);
-            }
+                }*/
         }
     }
 }

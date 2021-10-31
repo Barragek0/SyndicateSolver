@@ -26,7 +26,7 @@ namespace SyndicateSolver
                 LogMessage("BetrayalWindow is " + (betrayalWindowOpen ? "visible" : "not visible"));
                 if (betrayalWindowOpen)
                 {
-                    iterateChildren(betrayalWindow, "betrayalWindow");
+                    IterateChildren(betrayalWindow, "BetrayalWindow");
                 }
             }
             Element syndicatePanel = GameController.Game.IngameState.IngameUi.SyndicatePanel;
@@ -36,7 +36,7 @@ namespace SyndicateSolver
                 LogMessage("SyndicatePanel is " + (syndicatePanelOpen ? "visible" : "not visible"));
                 if (syndicatePanelOpen)
                 {
-                    iterateChildren(syndicatePanel, "syndicatePanel");
+                    IterateChildren(syndicatePanel, "SyndicatePanel");
                 }
             }
             Element syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
@@ -46,12 +46,12 @@ namespace SyndicateSolver
                 LogMessage("SyndicateTree is " + (syndicateTreeOpen ? "visible" : "not visible"));
                 if (syndicateTreeOpen)
                 {
-                   // iterateChildren(syndicateTree, "syndicateTree");
+                   // iterateChildren(syndicateTree, "SyndicateTree");
                 }
             }
         }
 
-        private void iterateChildren(Element element, String name)
+        private void IterateChildren(Element element, String name)
         {
                 for (var i = 0; i < element.ChildCount; i++)
                 {
@@ -65,11 +65,11 @@ namespace SyndicateSolver
                                 var childOfChild = element.GetChildAtIndex(i).GetChildAtIndex(i1);
                                 if (childOfChild != null)
                                 {
-                                    LogMessage(name + " layer 2 -> " + childOfChild.Text == null ? "null" : childOfChild.Text);
+                                    LogMessage(name + " layer 2: " + (childOfChild.Text ?? "null"));
                                 }
                             }
                         }
-                            LogMessage(name + " layer 1 -> " + child.Text == null ? "null" : child.Text);
+                            LogMessage(name + " layer 1: " + (child.Text ?? "null"));
                     }
                 }
         }

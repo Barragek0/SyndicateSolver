@@ -13,30 +13,42 @@ namespace SyndicateSolver
     {
         private bool _wasOpened;
 
+        private bool betrayalWindowOpen;
+        private bool syndicatePanelOpen;
+        private bool syndicateTreeOpen;
 
         public override void Render()
         {
-            var betrayalWindow = GameController.Game.IngameState.IngameUi.BetrayalWindow;
-
-            if (betrayalWindow.IsVisibleLocal)
+            if (GameController.Game.IngameState.IngameUi.BetrayalWindow.IsVisibleLocal != betrayalWindowOpen)
             {
-                if (!_wasOpened)
-                {
-                    _wasOpened = true;
-                    ParseMembers(betrayalWindow);
-                    //    FindAndSolveCurrentInteraction(betrayalWindow);
-                }
-
-                // DrawSolvedData(betrayalWindow);
+                LogMessage("BetrayalWindow is visible");
+                betrayalWindowOpen = true;
             }
-            else
+            if (GameController.Game.IngameState.IngameUi.SyndicatePanel.IsVisibleLocal != syndicatePanelOpen)
             {
-                _wasOpened = false;
+                LogMessage("SyndicatePanel is visible");
+                syndicatePanelOpen = true;
+            }
+            if (GameController.Game.IngameState.IngameUi.SyndicateTree.IsVisibleLocal != syndicateTreeOpen)
+            {
+                LogMessage("SyndicateTree is visible");
+                syndicateTreeOpen = true;
+            }
+            if (!_wasOpened)
+            {
+                _wasOpened = true;
+
+                if (GameController.Game.IngameState.IngameUi.BetrayalWindow.IsVisibleLocal)
+                {
+                    ParseMembers();
+                }
             }
         }
 
-        private void ParseMembers(Element betrayalWindow)
+        private void ParseMembers()
         {
+            var betrayalWindow = GameController.Game.IngameState.IngameUi.BetrayalWindow;
+
             for (var i = 0; i < betrayalWindow.ChildCount; i++)
             {
                 var child = betrayalWindow.GetChildAtIndex(i);
@@ -45,19 +57,48 @@ namespace SyndicateSolver
                     for (var i1 = 0; i1 < child.ChildCount; i1++)
                     {
                         var childOfChild = betrayalWindow.GetChildAtIndex(i).GetChildAtIndex(i1);
-                        if (childOfChild.Text.Length > 1)
-                            LogMessage("Found child of child -> " + childOfChild.Text);
-
-                        for (var i2 = 0; i2 < child.ChildCount; i2++)
-                        {
-                            var childOfChildOfChild = betrayalWindow.GetChildAtIndex(i).GetChildAtIndex(i1).GetChildAtIndex(i2);
-                            if (childOfChildOfChild.Text.Length > 1)
-                                LogMessage("Found child of child of child -> " + childOfChildOfChild.Text);
-                        }
+                        if (childOfChild.Text.Length > 0)
+                            LogMessage("BetrayalWindow child of child -> " + childOfChild.Text);
                     }
                 }
-                if (child.Text.Length > 1)
-                    LogMessage("Found child -> " + child.Text);
+                if (child.Text.Length > 0)
+                    LogMessage("BetrayalWindow child -> " + child.Text);
+            }
+
+            var syndicatePanel = GameController.Game.IngameState.IngameUi.SyndicatePanel;
+
+            for (var i = 0; i < syndicatePanel.ChildCount; i++)
+            {
+                var child = syndicatePanel.GetChildAtIndex(i);
+                if (child.Children.Count > 0)
+                {
+                    for (var i1 = 0; i1 < child.ChildCount; i1++)
+                    {
+                        var childOfChild = syndicatePanel.GetChildAtIndex(i).GetChildAtIndex(i1);
+                        if (childOfChild.Text.Length > 0)
+                            LogMessage("SyndicatePanel child of child -> " + childOfChild.Text);
+                    }
+                }
+                if (child.Text.Length > 0)
+                    LogMessage("SyndicatePanel child -> " + child.Text);
+            }
+
+            var syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
+
+            for (var i = 0; i < syndicateTree.ChildCount; i++)
+            {
+                var child = syndicateTree.GetChildAtIndex(i);
+                if (child.Children.Count > 0)
+                {
+                    for (var i1 = 0; i1 < child.ChildCount; i1++)
+                    {
+                        var childOfChild = syndicateTree.GetChildAtIndex(i).GetChildAtIndex(i1);
+                        if (childOfChild.Text.Length > 0)
+                            LogMessage("SyndicateTree child of child -> " + childOfChild.Text);
+                    }
+                }
+                if (child.Text.Length > 0)
+                    LogMessage("SyndicateTree child -> " + child.Text);
             }
         }
     }

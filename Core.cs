@@ -65,13 +65,11 @@ namespace SyndicateSolver
                                 var childOfChild = element.GetChildAtIndex(i).GetChildAtIndex(i1);
                                 if (childOfChild != null)
                                 {
-                                    if (childOfChild.Text.Length > 0)
-                                        LogMessage(name + " child of child -> " + childOfChild.Text == null ? "null" : childOfChild.Text);
+                                    LogMessage(name + " layer 2 -> " + childOfChild.Text == null ? "null" : childOfChild.Text);
                                 }
                             }
                         }
-                        if (child.Text.Length > 0)
-                            LogMessage(name + " child -> " + child.Text == null ? "null" : child.Text);
+                            LogMessage(name + " layer 1 -> " + child.Text == null ? "null" : child.Text);
                     }
                 }
         }

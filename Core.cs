@@ -28,7 +28,7 @@ namespace SyndicateSolver
                 {
                     try
                     {
-                        iterateChildren(betrayalWindow);
+                        iterateChildren(betrayalWindow, "betrayalWindow");
                     }
                     catch (Exception e)
                     {
@@ -45,7 +45,7 @@ namespace SyndicateSolver
                 {
                     try
                     {
-                        iterateChildren(syndicatePanel);
+                        iterateChildren(syndicatePanel, "syndicatePanel");
                     }
                     catch (Exception e)
                     {
@@ -62,7 +62,7 @@ namespace SyndicateSolver
                 {
                     try
                     {
-                        iterateChildren(syndicateTree);
+                        iterateChildren(syndicateTree, "syndicateTree");
                     }
                     catch (Exception e)
                     {
@@ -72,7 +72,7 @@ namespace SyndicateSolver
             }
         }
 
-        private void iterateChildren(Element element)
+        private void iterateChildren(Element element, String name)
         {
                 for (var i = 0; i < element.ChildCount; i++)
                 {
@@ -87,12 +87,12 @@ namespace SyndicateSolver
                                 if (childOfChild != null)
                                 {
                                     if (childOfChild.Text.Length > 0)
-                                        LogMessage("BetrayalWindow child of child -> " + childOfChild.Text == null ? "null" : childOfChild.Text);
+                                        LogMessage(name + " child of child -> " + childOfChild.Text == null ? "null" : childOfChild.Text);
                                 }
                             }
                         }
                         if (child.Text.Length > 0)
-                            LogMessage("BetrayalWindow child -> " + child.Text);
+                            LogMessage(name + " child -> " + child.Text);
                     }
                 }
         }

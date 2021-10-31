@@ -40,17 +40,15 @@ namespace SyndicateSolver
             for (var i = 0; i < betrayalWindow.ChildCount; i++)
             {
                 var child = betrayalWindow.GetChildAtIndex(i);
-                var indexedChildren = 0;
-                while (child.ChildCount > indexedChildren)
+                if (child.Children.Count > 0)
                 {
-                    var childOfChild = betrayalWindow.GetChildAtIndex(i).GetChildAtIndex(indexedChildren);
-                    LogMessage("Found child of child -> " + childOfChild.Text);
-                    indexedChildren++;
+                    for (var i1 = 0; i1 < child.ChildCount; i1++)
+                    {
+                        var childOfChild = betrayalWindow.GetChildAtIndex(i).GetChildAtIndex(i1);
+                        LogMessage("Found child of child -> " + childOfChild.Text);
+                    }
                 }
-                {
-
-                }
-                LogMessage("Found child -> "+child.Text);
+                LogMessage("Found child -> " + child.Text);
             }
         }
     }

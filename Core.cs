@@ -97,7 +97,8 @@ namespace SyndicateSolver
                     }
                 }
 
-               /* var syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
+                //this causes the deadlock
+                var syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
 
                 for (var i = 0; i < syndicateTree.ChildCount; i++)
                 {
@@ -119,7 +120,7 @@ namespace SyndicateSolver
                         if (child.Text.Length > 0)
                             LogMessage("SyndicateTree child -> " + child.Text);
                     }
-                }*/
+                }
         }
     }
 }

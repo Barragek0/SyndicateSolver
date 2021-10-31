@@ -26,14 +26,7 @@ namespace SyndicateSolver
                 LogMessage("BetrayalWindow is " + (betrayalWindowOpen ? "visible" : "not visible"));
                 if (betrayalWindowOpen)
                 {
-                    try
-                    {
-                        iterateChildren(betrayalWindow, "betrayalWindow");
-                    }
-                    catch (Exception e)
-                    {
-                        LogMessage("Error occured in parse members: " + e.Message);
-                    }
+                    iterateChildren(betrayalWindow, "betrayalWindow");
                 }
             }
             Element syndicatePanel = GameController.Game.IngameState.IngameUi.SyndicatePanel;
@@ -43,14 +36,7 @@ namespace SyndicateSolver
                 LogMessage("SyndicatePanel is " + (syndicatePanelOpen ? "visible" : "not visible"));
                 if (syndicatePanelOpen)
                 {
-                    try
-                    {
-                        iterateChildren(syndicatePanel, "syndicatePanel");
-                    }
-                    catch (Exception e)
-                    {
-                        LogMessage("Error occured in parse members: " + e.Message);
-                    }
+                    iterateChildren(syndicatePanel, "syndicatePanel");
                 }
             }
             Element syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
@@ -60,14 +46,7 @@ namespace SyndicateSolver
                 LogMessage("SyndicateTree is " + (syndicateTreeOpen ? "visible" : "not visible"));
                 if (syndicateTreeOpen)
                 {
-                    try
-                    {
-                        iterateChildren(syndicateTree, "syndicateTree");
-                    }
-                    catch (Exception e)
-                    {
-                        LogMessage("Error occured in parse members: " + e.Message);
-                    }
+                   // iterateChildren(syndicateTree, "syndicateTree");
                 }
             }
         }
@@ -92,7 +71,7 @@ namespace SyndicateSolver
                             }
                         }
                         if (child.Text.Length > 0)
-                            LogMessage(name + " child -> " + child.Text);
+                            LogMessage(name + " child -> " + child.Text == null ? "null" : child.Text);
                     }
                 }
         }

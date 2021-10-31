@@ -46,7 +46,7 @@ namespace SyndicateSolver
                 LogMessage("SyndicateTree is " + (syndicateTreeOpen ? "visible" : "not visible"));
                 if (syndicateTreeOpen)
                 {
-                   // iterateChildren(syndicateTree, "SyndicateTree");
+                    IterateChildren(syndicateTree, "SyndicateTree");
                 }
             }
         }

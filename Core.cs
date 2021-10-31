@@ -36,7 +36,7 @@ namespace SyndicateSolver
             }
             if (!_wasOpened)
             {
-                ParseMembers();
+               // ParseMembers();
                 _wasOpened = true;
             }
         }

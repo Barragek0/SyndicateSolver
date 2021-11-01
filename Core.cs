@@ -41,7 +41,6 @@ namespace SyndicateSolver
 
         private void IterateChildren(Element element)
         {
-            element = element.GetChildAtIndex(1);
             for (int i = 0; i < element.Children.Count; i++)
             {
                     Element allSyndicateMembers = element.GetChildAtIndex(i);

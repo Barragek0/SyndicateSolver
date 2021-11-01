@@ -10,7 +10,7 @@ using SharpDX;
 namespace SyndicateSolver
 {
     public class Core : BaseSettingsPlugin<Settings>
-    {//
+    {
 
         private bool betrayalWindowOpen;
         private bool syndicatePanelOpen;
@@ -48,8 +48,9 @@ namespace SyndicateSolver
                 {
                     Element syndicateMember = element.GetChildAtIndex(i).GetChildFromIndices(4, 1);
                     RectangleF boundingBox = syndicateMember.GetClientRectCache;
-                    LogMessage("Found member: "+syndicateMember.Text);
+                    LogMessage("Found member: " + syndicateMember.Text);
                 }
+            }
         }
     }
 }

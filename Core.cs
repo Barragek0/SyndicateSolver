@@ -47,7 +47,7 @@ namespace SyndicateSolver
                     Element allSyndicateMembers = element.GetChildAtIndex(i);
                     Element syndicateMember = allSyndicateMembers.GetChildFromIndices(4, 1);
                     RectangleF boundingBox = syndicateMember.GetClientRectCache;
-                    LogMessage("Found member: 1" + allSyndicateMembers.GetChildFromIndices(1, 1) + " 2" + allSyndicateMembers.GetChildFromIndices(2, 1) + " 3" + allSyndicateMembers.GetChildFromIndices(3, 1) + " 4" + allSyndicateMembers.GetChildFromIndices(4, 1));
+                    LogMessage("Found member: 1" + allSyndicateMembers.GetChildFromIndices(1, 1) + " 2" + allSyndicateMembers.GetChildFromIndices(2, 1) + " 3" + allSyndicateMembers.GetChildFromIndices(3, 1));
             }
         }
     }

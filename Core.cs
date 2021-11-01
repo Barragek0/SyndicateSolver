@@ -10,7 +10,7 @@ using SharpDX;
 namespace SyndicateSolver
 {
     public class Core : BaseSettingsPlugin<Settings>
-    {
+    {//
 
         private bool betrayalWindowOpen;
         private bool syndicatePanelOpen;

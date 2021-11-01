@@ -41,12 +41,13 @@ namespace SyndicateSolver
 
         private void IterateChildren(Element element)
         {
+            element = element.GetChildAtIndex(0);
             for (int i = 0; i < element.Children.Count; i++)
             {
                     Element allSyndicateMembers = element.GetChildAtIndex(i);
                    // Element syndicateMember = allSyndicateMembers.GetChildFromIndices(4, 1);
                    // RectangleF boundingBox = syndicateMember.GetClientRectCache;
-                    LogMessage("Found member: 1" + allSyndicateMembers.GetChildFromIndices(1, 1) + " 2" + allSyndicateMembers.GetChildFromIndices(2, 1) + " 3" + allSyndicateMembers.GetChildFromIndices(3, 1));
+                    LogMessage("Found member - 0:" + allSyndicateMembers.GetChildFromIndices(0, 0) + " 1:" + allSyndicateMembers.GetChildFromIndices(1, 0) + " 2:" + allSyndicateMembers.GetChildFromIndices(2, 0) + " 3:" + allSyndicateMembers.GetChildFromIndices(3, 0));
             }
         }
     }

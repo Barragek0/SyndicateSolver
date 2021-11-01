@@ -44,12 +44,10 @@ namespace SyndicateSolver
             element = element.GetChildAtIndex(1);
             for (int i = 0; i < element.Children.Count; i++)
             {
-                if (i >= 10)
-                {
-                    Element syndicateMember = element.GetChildAtIndex(i).GetChildFromIndices(4, 1);
+                    Element allSyndicateMembers = element.GetChildAtIndex(i);
+                    Element syndicateMember = allSyndicateMembers.GetChildFromIndices(4, 1);
                     RectangleF boundingBox = syndicateMember.GetClientRectCache;
-                    LogMessage("Found member: " + syndicateMember.Text);
-                }
+                    LogMessage("Found member: 1" + allSyndicateMembers.GetChildFromIndices(1, 1) + " 2" + allSyndicateMembers.GetChildFromIndices(2, 1) + " 3" + allSyndicateMembers.GetChildFromIndices(3, 1) + " 4" + allSyndicateMembers.GetChildFromIndices(4, 1));
             }
         }
     }

@@ -42,7 +42,7 @@ namespace SyndicateSolver
         private void IterateChildren(Element element)
         {
             Element aisling = element.GetElementByString("Aisling");
-            Graphics.DrawFrame(aisling.Parent.GetClientRectCache, Color.AliceBlue, 1);
+            Graphics.DrawFrame(aisling.GetClientRectCache, Color.AliceBlue, 2);
         }
     }
 }

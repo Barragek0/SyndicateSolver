@@ -11,11 +11,9 @@ namespace SyndicateSolver
 {
     public class Core : BaseSettingsPlugin<Settings>
     {
-        private bool _wasOpened;
 
         private bool betrayalWindowOpen;
         private bool syndicatePanelOpen;
-        private bool syndicateTreeOpen;
 
         public override void Render()
         {
@@ -26,7 +24,7 @@ namespace SyndicateSolver
                 LogMessage("BetrayalWindow is " + (betrayalWindowOpen ? "visible" : "not visible"));
                 if (betrayalWindowOpen)
                 {
-                    IterateChildren(betrayalWindow, "BetrayalWindow");
+                    IterateChildren(betrayalWindow);
                 }
             }
             Element syndicatePanel = GameController.Game.IngameState.IngameUi.SyndicatePanel;
@@ -36,41 +34,21 @@ namespace SyndicateSolver
                 LogMessage("SyndicatePanel is " + (syndicatePanelOpen ? "visible" : "not visible"));
                 if (syndicatePanelOpen)
                 {
-                    IterateChildren(syndicatePanel, "SyndicatePanel");
-                }
-            }
-            Element syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
-            if (syndicateTree.IsVisibleLocal != syndicateTreeOpen)
-            {
-                syndicateTreeOpen = !syndicateTreeOpen;
-                LogMessage("SyndicateTree is " + (syndicateTreeOpen ? "visible" : "not visible"));
-                if (syndicateTreeOpen)
-                {
-                   // IterateChildren(syndicateTree, "SyndicateTree");
+                    //IterateChildren(syndicatePanel, "SyndicatePanel");
                 }
             }
         }
 
-        private void IterateChildren(Element element, String name)
+        private void IterateChildren(Element element)
         {
-                for (var i = 0; i < element.ChildCount; i++)
+            element = element.GetChildAtIndex(1);
+            for (int i = 0; i < element.Children.Count; i++)
+            {
+                if (i >= 10)
                 {
-                    var child = element.GetChildAtIndex(i);
-                    if (child != null)
-                    {
-                        if (child.Children.Count > 0)
-                        {
-                            for (var i1 = 0; i1 < child.ChildCount; i1++)
-                            {
-                                var childOfChild = element.GetChildAtIndex(i).GetChildAtIndex(i1);
-                                if (childOfChild != null)
-                                {
-                                    LogMessage(name + " layer 2: " + (childOfChild.Text ?? "null"));
-                                }
-                            }
-                        }
-                            LogMessage(name + " layer 1: " + (child.Text ?? "null"));
-                    }
+                    Element syndicateMember = element.GetChildAtIndex(i).GetChildFromIndices(4, 1);
+                    RectangleF boundingBox = syndicateMember.GetClientRectCache;
+                    LogMessage("Found member: "+syndicateMember.Text);
                 }
         }
     }

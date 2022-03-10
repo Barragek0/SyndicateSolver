@@ -34,7 +34,17 @@ namespace SyndicateSolver
                 LogMessage("SyndicatePanel is " + (syndicatePanelOpen ? "visible" : "not visible"));
                 if (syndicatePanelOpen)
                 {
-                    //IterateChildren(syndicatePanel, "SyndicatePanel");
+                    IterateChildren(syndicatePanel);
+                }
+            }
+            Element syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
+            if (syndicateTree.IsVisibleLocal != syndicateTreeOpen)
+            {
+                syndicateTreeOpen = !syndicateTreeOpen;
+                LogMessage("SyndicateTree is " + (syndicatePanelOpen ? "visible" : "not visible"));
+                if (syndicateTreeOpen)
+                {
+                    IterateChildren(syndicateTree);
                 }
             }
         }

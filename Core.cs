@@ -12,8 +12,8 @@ namespace SyndicateSolver
     public class Core : BaseSettingsPlugin<Settings>
     {
 
-        private bool betrayalWindowOpen;
-        private bool syndicatePanelOpen;
+        private static bool betrayalWindowOpen = false;
+        private static bool syndicatePanelOpen = false;
 
         public override void Render()
         {

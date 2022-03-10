@@ -18,6 +18,8 @@ namespace SyndicateSolver
         public override void Render()
         {
             Element betrayalWindow = GameController.Game.IngameState.IngameUi.BetrayalWindow;
+            if (betrayalWindow.IsVisibleLocal)
+                LogMessage("BetrayalWindow visible");
             if (betrayalWindow.IsVisibleLocal != betrayalWindowOpen)
             {
                 betrayalWindowOpen = !betrayalWindowOpen;
@@ -28,6 +30,8 @@ namespace SyndicateSolver
                 }
             }
             Element syndicatePanel = GameController.Game.IngameState.IngameUi.SyndicatePanel;
+            if (syndicatePanel.IsVisibleLocal)
+                LogMessage("syndicatePanel visible");
             if (syndicatePanel.IsVisibleLocal != syndicatePanelOpen)
             {
                 syndicatePanelOpen = !syndicatePanelOpen;
@@ -38,6 +42,8 @@ namespace SyndicateSolver
                 }
             }
             Element syndicateTree = GameController.Game.IngameState.IngameUi.SyndicateTree;
+            if (syndicateTree.IsVisibleLocal)
+                LogMessage("syndicateTree visible");
             if (syndicateTree.IsVisibleLocal != syndicateTreeOpen)
             {
                 syndicateTreeOpen = !syndicateTreeOpen;
